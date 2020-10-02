@@ -30,20 +30,17 @@ def main():
                             );"""
     conn = create_connection(database)
 
-    # if conn is not None:
-    #     create_table(conn, create_statement)
-    # else:
-    #     print("Error! Cannot connect to the database")
+    if conn is not None:
+        create_table(conn, create_statement)
+    else:
+        print("Error! Cannot connect to the database")
 
     # Create a cursor object so we can execute SQL queries
 
     c = conn.cursor()
     c.execute("INSERT INTO Facts(fact, rating) VALUES ('TEST FACT 2', 3);")
     c.execute("INSERT INTO Facts(fact, rating) VALUES ('TEST FACT 2', 3);")
-    c.execute("select sql from sqlite_master where name = 'Facts';")
-    rows = c.fetchall()
-    for ro in rows:
-        print(ro)
+
     c.execute("SELECT * FROM Facts;")
     # Get the results from the select query
     rows = c.fetchall()
@@ -58,5 +55,4 @@ def main():
     conn.close()
 
 if __name__ == '__main__':
-    
     main()
