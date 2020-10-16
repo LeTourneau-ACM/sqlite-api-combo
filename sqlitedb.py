@@ -9,9 +9,6 @@ def create_connection(db_file):
         return conn
     except Error as e:
         print(e)
-    # finally:
-    #     if conn:
-            # conn.close()
 
 def create_table(conn, sql_syntax):
     try:
@@ -26,7 +23,7 @@ def main():
     create_statement = """  CREATE TABLE IF NOT EXISTS Facts(
                             id integer PRIMARY KEY AUTOINCREMENT,
                             fact text NOT NULL,
-                            rating integer default 0 
+                            rating integer default 0
                             );"""
     conn = create_connection(database)
 
